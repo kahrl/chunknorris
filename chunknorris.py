@@ -16,6 +16,11 @@ def chunkbox(cPos):
 class mclevelfixer(object):
     def printUsage(self):
         print "Usage: chunknorris.py WORLDDIR BACKUPDIR..."
+        print "You can specify more than one backup, they are tried in order."
+        print "Options:"
+        print "  -h, --help    You're reading it."
+        print "  -n, --nether  Fix the Nether instead of the overworld dimension"
+        print "  -e, --end     Fix the End instead of the overworld dimension"
 
     def printUsageAndQuit(self):
         self.printUsage()
@@ -45,6 +50,8 @@ class mclevelfixer(object):
                 self.printUsageAndQuit()
             elif arg.lower() in ("-n", "--nether"):
                 dimension = -1
+            elif arg.lower() in ("-e", "--end"):
+                dimension = 1
             elif arg[0] == "-":
                 raise UsageError, "Unknown option ({0})".format(arg)
             else:
